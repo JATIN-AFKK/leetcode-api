@@ -34,8 +34,12 @@ def fetch_data(username: str):
         "operationName": "userSessionProgress"
     }
 
-    response = requests.post(url, json=payload)
-    
+    response = requests.post(url, json=payload, headers={
+          "User-Agent": "Mozilla/5.0",
+          "Content-Type": "application/json"
+      }
+    )
+        
     try:
         data = response.json()  # parse JSON response
     except Exception:
